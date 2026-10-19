@@ -121,7 +121,7 @@ const products = ref(loadedProducts);
         </p>
 
         <div class="product-card__footer">
-          <span class="product-card__price">{{product.price}} ₽</span>
+          <span class="product-card__price">{{product.price.toLocaleString()}} ₽</span>
           <button class="product-card__button" type="button">Купить</button>
         </div>
       </div>
