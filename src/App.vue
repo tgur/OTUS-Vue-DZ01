@@ -105,11 +105,131 @@ const products = ref(loadedProducts);
 </script>
 
 <template>
-  <section>
-    <article v-for="product in products">
-      {{product.title}}
+  <section class="products">
+    <article v-for="product in products" class="product-card">
+      <img
+          class="product-card__image"
+          :src="product.image"
+          :alt="product.title"
+      >
+
+      <div class="product-card__content">
+        <p class="product-card__brand">{{product.brand}}</p>
+        <h2 class="product-card__title">{{product.title}}</h2>
+        <p class="product-card__description">
+          {{product.description}}
+        </p>
+
+        <div class="product-card__footer">
+          <span class="product-card__price">{{product.price}} ₽</span>
+          <button class="product-card__button" type="button">Купить</button>
+        </div>
+      </div>
     </article>
   </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  background: #f5f6f8;
+  color: #20232a;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 280px;
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.product-card__image {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background: #e9ecef;
+}
+
+.product-card__content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.product-card__brand {
+  margin: 0 0 8px;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.product-card__title {
+  margin: 0 0 12px;
+  font-size: 22px;
+}
+
+.product-card__description {
+  margin: 0 0 20px;
+  color: #4d5359;
+  line-height: 1.5;
+}
+
+.product-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+}
+
+.product-card__price {
+  font-size: 22px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.product-card__button {
+  padding: 11px 18px;
+  border: 0;
+  border-radius: 7px;
+  background: #2563eb;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.product-card__button:hover,
+.product-card__button:focus-visible {
+  background: #1d4ed8;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 20px 12px;
+  }
+
+  .products {
+    gap: 16px;
+  }
+}
+</style>
