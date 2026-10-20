@@ -102,11 +102,20 @@ const loadedProducts =
     ];
 const products = ref(loadedProducts);
 
+/**
+ * Отправляет товар в корзину
+ * @param id ID товара
+ * @param e событие
+ */
+function toCart(id, e) {
+  alert(`Метод обработки клика на кнопку зарезервирован на будущие работы.
+Пока что мы передали в метод только id товара = ` + id);
+}
 </script>
 
 <template>
   <section class="products">
-    <article v-for="product in products" class="product-card">
+    <article v-for="product in products" class="product-card" :key="product.id" :data-product-id="product.id">
       <img
           class="product-card__image"
           :src="product.image"
@@ -122,7 +131,7 @@ const products = ref(loadedProducts);
 
         <div class="product-card__footer">
           <span class="product-card__price">{{product.price.toLocaleString()}} ₽</span>
-          <button class="product-card__button" type="button">Купить</button>
+          <button class="product-card__button" type="button" @click="toCart(product.id, $event)">Купить</button>
         </div>
       </div>
     </article>
