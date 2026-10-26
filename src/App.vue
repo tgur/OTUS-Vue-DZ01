@@ -115,7 +115,7 @@ function toCart(id, e) {
 
 <template>
   <section class="products">
-    <article v-for="product in products" class="product-card" :key="product.id" :data-product-id="product.id">
+    <article v-for="product in products" class="product-card" :key="product.id">
       <img
           class="product-card__image"
           :src="product.image"
@@ -139,17 +139,7 @@ function toCart(id, e) {
 </template>
 
 <style scoped>
-* {
-  box-sizing: border-box;
-}
 
-body {
-  margin: 0;
-  padding: 40px 20px;
-  font-family: Arial, sans-serif;
-  background: #f5f6f8;
-  color: #20232a;
-}
 
 .products {
   display: flex;
@@ -233,10 +223,6 @@ body {
 }
 
 @media (max-width: 600px) {
-  body {
-    padding: 20px 12px;
-  }
-
   .products {
     gap: 16px;
   }
